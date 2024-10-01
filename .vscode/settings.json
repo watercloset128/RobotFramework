@@ -1,0 +1,6 @@
+{
+    "robot.codeFormatter": "robotidy",
+    "robot.interactiveConsole.arguments": [
+        "--output", "${workspace}/results/interactive_output.xml"
+    ]
+}

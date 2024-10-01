@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.8 on darwin)" generated="20240515 17:30:07.941" rpa="false" schemaversion="4">
+<suite id="s1" name="Shopping Test Cases" source="/Users/wangcangsang/Library/CloudStorage/OneDrive-Personal/文档/Tech/RobotFramework/tests/shopping_test_cases.robot">
+<test id="s1-t1" name="End to End Shopping Workflow as a Return User" line="65">
+<kw name="Selenium Initialization" library="common" type="SETUP">
+<doc>Selenium WebDriver Initialization and Configuration Keyword</doc>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<arg>${SELENIUMIMPLICITWAIT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20240515 17:30:08.866" endtime="20240515 17:30:08.867"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>${SELENIUMSPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20240515 17:30:08.867" endtime="20240515 17:30:08.868"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>Edge</arg>
+<arg>options=${BROWSEROPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240515 17:30:08.869" level="INFO">Opening browser 'Edge' to base url 'https://www.advantageonlineshopping.com/#/'.</msg>
+<status status="PASS" starttime="20240515 17:30:08.868" endtime="20240515 17:30:13.244"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20240515 17:30:13.245" endtime="20240515 17:30:13.789"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:08.865" endtime="20240515 17:30:13.791"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${TESTDATASHEET}</var>
+<arg>Login</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240515 17:30:13.792" level="INFO">${TESTDATASHEET} = Login</msg>
+<status status="PASS" starttime="20240515 17:30:13.792" endtime="20240515 17:30:13.794"/>
+</kw>
+<kw name="Get Test Data From Excel" library="UtilLibrary">
+<var>${tabledata}</var>
+<arg>${TESTDATAFILE}</arg>
+<arg>${TESTDATASHEET}</arg>
+<doc>Get table object for test data driven purpose</doc>
+<msg timestamp="20240515 17:30:13.857" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x11123d910&gt;</msg>
+<msg timestamp="20240515 17:30:13.858" level="INFO">Created table: Table(columns=['USERNAME', 'PASSWORD'], rows=3)</msg>
+<msg timestamp="20240515 17:30:13.858" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x11123d910&gt;</msg>
+<msg timestamp="20240515 17:30:13.859" level="INFO">${tabledata} = Table(columns=['USERNAME', 'PASSWORD'], rows=3)</msg>
+<status status="PASS" starttime="20240515 17:30:13.795" endtime="20240515 17:30:13.860"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{tabledata}</value>
+<iter>
+<var name="${row}">{'USERNAME': 'Cangsang', 'PASSWORD': 'Water@128'}</var>
+<kw name="Pick up a Catagory to View" library="homepage">
+<arg>${Mice_Img}</arg>
+<kw name="Convert Elementlocator To Tuple String" library="UtilLibrary">
+<var>${elementexists}</var>
+<arg>${catagorylocator}</arg>
+<doc>Convert element locator from string to a string like a tuple so that it could
+be used in Evaluate function and check the element condition with
+Wait For statement.</doc>
+<msg timestamp="20240515 17:30:13.863" level="INFO">Concat String is: 'id','miceImg'</msg>
+<msg timestamp="20240515 17:30:13.871" level="INFO">${elementexists} = ('id','miceImg')</msg>
+<status status="PASS" starttime="20240515 17:30:13.863" endtime="20240515 17:30:13.871"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${elementexists}</var>
+<arg>${elementexists}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240515 17:30:13.872" level="INFO">${elementexists} = ('id', 'miceImg')</msg>
+<status status="PASS" starttime="20240515 17:30:13.872" endtime="20240515 17:30:13.872"/>
+</kw>
+<kw name="Wait For Expected Condition" library="SeleniumLibrary">
+<arg>Element To Be Clickable</arg>
+<arg>${elementexists}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until ``condition`` is true or ``timeout`` expires.</doc>
+<status status="PASS" starttime="20240515 17:30:13.872" endtime="20240515 17:30:17.688"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${catagorylocator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:17.690" level="INFO">Clicking element 'id: miceImg'.</msg>
+<status status="PASS" starttime="20240515 17:30:17.689" endtime="20240515 17:30:18.805"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:13.861" endtime="20240515 17:30:18.806"/>
+</kw>
+<kw name="Pick up a Product to View" library="productcatagorypage">
+<arg>${HP_Z3200_Img}</arg>
+<kw name="Click Image" library="SeleniumLibrary">
+<arg>${productlocator}</arg>
+<doc>Clicks an image identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:18.807" level="INFO">Clicking image 'id: 28'.</msg>
+<status status="PASS" starttime="20240515 17:30:18.807" endtime="20240515 17:30:22.230"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:18.806" endtime="20240515 17:30:22.231"/>
+</kw>
+<kw name="Set Product Quantity" library="productdetailpage">
+<arg>2</arg>
+<doc>The step to modify the quantity to be added to the cart.
+The arguemnts is to set the quantity. Using Keyboard simulation instead of
+Input Text as here comes the shadow dom which cannot be interacted directly.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Quantity_txtfield}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:22.233" level="INFO">Clicking element 'name: quantity'.</msg>
+<status status="PASS" starttime="20240515 17:30:22.232" endtime="20240515 17:30:24.869"/>
+</kw>
+<kw name="Press Key" library="SeleniumLibrary">
+<arg>${Quantity_txtfield}</arg>
+<arg>${quantity}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" starttime="20240515 17:30:24.870" endtime="20240515 17:30:26.028"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:22.231" endtime="20240515 17:30:26.028"/>
+</kw>
+<kw name="Add to Cart" library="productdetailpage">
+<doc>The step to add the product to the cart.</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Add_To_Cart_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:26.030" level="INFO">Clicking button 'ADD TO CART'.</msg>
+<status status="PASS" starttime="20240515 17:30:26.029" endtime="20240515 17:30:31.155"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:26.029" endtime="20240515 17:30:31.155"/>
+</kw>
+<kw name="Go Checkout" library="productdetailpage">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${cnt}</var>
+<arg>${Checkout_btn}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20240515 17:30:31.679" level="INFO">${cnt} = 1</msg>
+<status status="PASS" starttime="20240515 17:30:31.158" endtime="20240515 17:30:31.679"/>
+</kw>
+<if>
+<branch type="IF" condition="${cnt} == 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cart_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240515 17:30:31.680" endtime="20240515 17:30:31.681"/>
+</kw>
+<status status="NOT RUN" starttime="20240515 17:30:31.679" endtime="20240515 17:30:31.681"/>
+</branch>
+<status status="PASS" starttime="20240515 17:30:31.679" endtime="20240515 17:30:31.681"/>
+</if>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Checkout_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:31.682" level="INFO">Clicking button 'id: checkOutPopUp'.</msg>
+<status status="PASS" starttime="20240515 17:30:31.681" endtime="20240515 17:30:34.272"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:31.157" endtime="20240515 17:30:34.272"/>
+</kw>
+<kw name="Put an Order As Returnuser With ${row}[USERNAME] ${row}[PASSWORD] AND ${None}" library="orderpaymentpage" sourcename="Put an Order As ${newuser} With ${username} ${password} AND ${emailaddress}">
+<kw name="Convert To Lower Case" library="String">
+<var>${newuser_lowercase}</var>
+<arg>${newuser}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20240515 17:30:34.274" level="INFO">${newuser_lowercase} = returnuser</msg>
+<status status="PASS" starttime="20240515 17:30:34.273" endtime="20240515 17:30:34.275"/>
+</kw>
+<if>
+<branch type="IF" condition="$newuser_lowercase == 'newuser'">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Order_Registration_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240515 17:30:34.276" endtime="20240515 17:30:34.276"/>
+</kw>
+<kw name="User Registratrion" library="userprofile">
+<var>${bSuccess}</var>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${emailaddress}</arg>
+<status status="NOT RUN" starttime="20240515 17:30:34.276" endtime="20240515 17:30:34.277"/>
+</kw>
+<if>
+<branch type="IF" condition="$bSuccess == ${False}">
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="NOT RUN" starttime="20240515 17:30:34.277" endtime="20240515 17:30:34.277"/>
+</kw>
+<kw name="Quick Login" library="userprofile">
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20240515 17:30:34.277" endtime="20240515 17:30:34.277"/>
+</kw>
+<status status="NOT RUN" starttime="20240515 17:30:34.277" endtime="20240515 17:30:34.278"/>
+</branch>
+<status status="NOT RUN" starttime="20240515 17:30:34.277" endtime="20240515 17:30:34.278"/>
+</if>
+<status status="NOT RUN" starttime="20240515 17:30:34.275" endtime="20240515 17:30:34.278"/>
+</branch>
+<branch type="ELSE">
+<kw name="Quick Login" library="userprofile">
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${Quicklogin_Username_txtfield}</arg>
+<arg>${username}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:34.280" level="INFO">Typing text 'Cangsang' into text field 'name: usernameInOrderPayment'.</msg>
+<status status="PASS" starttime="20240515 17:30:34.279" endtime="20240515 17:30:35.923"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${Quicklogin_Password_txtfield}</arg>
+<arg>${password}</arg>
+<arg>clear=True</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:35.925" level="INFO">Typing password into text field 'name: passwordInOrderPayment'.</msg>
+<msg timestamp="20240515 17:30:36.971" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240515 17:30:37.562" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240515 17:30:35.924" endtime="20240515 17:30:37.562"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${QuickLogin_Login_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:37.564" level="INFO">Clicking button 'LOGIN'.</msg>
+<status status="PASS" starttime="20240515 17:30:37.563" endtime="20240515 17:30:42.664"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:34.278" endtime="20240515 17:30:42.664"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:34.278" endtime="20240515 17:30:42.664"/>
+</branch>
+<status status="PASS" starttime="20240515 17:30:34.275" endtime="20240515 17:30:42.664"/>
+</if>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>NEXT</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:42.665" level="INFO">Clicking button 'NEXT'.</msg>
+<status status="PASS" starttime="20240515 17:30:42.665" endtime="20240515 17:30:47.807"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name: safepay_username</arg>
+<arg>${username}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:47.809" level="INFO">Typing text 'Cangsang' into text field 'name: safepay_username'.</msg>
+<status status="PASS" starttime="20240515 17:30:47.808" endtime="20240515 17:30:49.497"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>name: safepay_password</arg>
+<arg>${password}</arg>
+<arg>clear=True</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:49.499" level="INFO">Typing password into text field 'name: safepay_password'.</msg>
+<msg timestamp="20240515 17:30:50.598" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240515 17:30:51.187" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240515 17:30:49.498" endtime="20240515 17:30:51.188"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>PAY NOW</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:51.194" level="INFO">Clicking button 'PAY NOW'.</msg>
+<status status="PASS" starttime="20240515 17:30:51.193" endtime="20240515 17:30:56.309"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:34.272" endtime="20240515 17:30:56.309"/>
+</kw>
+<kw name="Order Shoulbe be Put Successfully with Text Thank you for buying with Advantage" library="orderpaymentpage" sourcename="Order Shoulbe be Put Successfully with Text ${paymentsuccessfully}">
+<kw name="Element Attribute Value Should Be" library="SeleniumLibrary">
+<arg>${Payment_Confirmation_txt}</arg>
+<arg>innerText</arg>
+<arg>${paymentsuccessfully}</arg>
+<doc>Verifies element identified by ``locator`` contains expected attribute value.</doc>
+<msg timestamp="20240515 17:30:57.379" level="INFO">Element '//div[@id="orderPaymentSuccess"]//span[contains(@class, "roboto-regular")]' attribute 'innerText' contains value 'Thank you for buying with Advantage'.</msg>
+<status status="PASS" starttime="20240515 17:30:56.310" endtime="20240515 17:30:57.380"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:56.310" endtime="20240515 17:30:57.380"/>
+</kw>
+<kw name="User Logout" library="userprofile">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${User_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:57.382" level="INFO">Clicking element 'id: menuUser'.</msg>
+<status status="PASS" starttime="20240515 17:30:57.381" endtime="20240515 17:30:58.438"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Logout_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:30:58.439" level="INFO">Clicking element '//*[@id="loginMiniTitle"]/label[@translate="Sign_out"]'.</msg>
+<status status="PASS" starttime="20240515 17:30:58.438" endtime="20240515 17:30:59.498"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:57.381" endtime="20240515 17:30:59.498"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:13.860" endtime="20240515 17:30:59.498"/>
+</iter>
+<iter>
+<var name="${row}">{'USERNAME': 'Angel', 'PASSWORD': 'Angel@314'}</var>
+<kw name="Pick up a Catagory to View" library="homepage">
+<arg>${Mice_Img}</arg>
+<kw name="Convert Elementlocator To Tuple String" library="UtilLibrary">
+<var>${elementexists}</var>
+<arg>${catagorylocator}</arg>
+<doc>Convert element locator from string to a string like a tuple so that it could
+be used in Evaluate function and check the element condition with
+Wait For statement.</doc>
+<msg timestamp="20240515 17:30:59.500" level="INFO">Concat String is: 'id','miceImg'</msg>
+<msg timestamp="20240515 17:30:59.500" level="INFO">${elementexists} = ('id','miceImg')</msg>
+<status status="PASS" starttime="20240515 17:30:59.499" endtime="20240515 17:30:59.500"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${elementexists}</var>
+<arg>${elementexists}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240515 17:30:59.500" level="INFO">${elementexists} = ('id', 'miceImg')</msg>
+<status status="PASS" starttime="20240515 17:30:59.500" endtime="20240515 17:30:59.501"/>
+</kw>
+<kw name="Wait For Expected Condition" library="SeleniumLibrary">
+<arg>Element To Be Clickable</arg>
+<arg>${elementexists}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until ``condition`` is true or ``timeout`` expires.</doc>
+<status status="PASS" starttime="20240515 17:30:59.501" endtime="20240515 17:31:01.057"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${catagorylocator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:01.059" level="INFO">Clicking element 'id: miceImg'.</msg>
+<status status="PASS" starttime="20240515 17:31:01.058" endtime="20240515 17:31:02.191"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:59.499" endtime="20240515 17:31:02.192"/>
+</kw>
+<kw name="Pick up a Product to View" library="productcatagorypage">
+<arg>${HP_Z3200_Img}</arg>
+<kw name="Click Image" library="SeleniumLibrary">
+<arg>${productlocator}</arg>
+<doc>Clicks an image identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:02.195" level="INFO">Clicking image 'id: 28'.</msg>
+<status status="PASS" starttime="20240515 17:31:02.194" endtime="20240515 17:31:03.816"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:02.193" endtime="20240515 17:31:03.816"/>
+</kw>
+<kw name="Set Product Quantity" library="productdetailpage">
+<arg>2</arg>
+<doc>The step to modify the quantity to be added to the cart.
+The arguemnts is to set the quantity. Using Keyboard simulation instead of
+Input Text as here comes the shadow dom which cannot be interacted directly.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Quantity_txtfield}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:03.818" level="INFO">Clicking element 'name: quantity'.</msg>
+<status status="PASS" starttime="20240515 17:31:03.817" endtime="20240515 17:31:04.886"/>
+</kw>
+<kw name="Press Key" library="SeleniumLibrary">
+<arg>${Quantity_txtfield}</arg>
+<arg>${quantity}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" starttime="20240515 17:31:04.887" endtime="20240515 17:31:05.936"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:03.816" endtime="20240515 17:31:05.937"/>
+</kw>
+<kw name="Add to Cart" library="productdetailpage">
+<doc>The step to add the product to the cart.</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Add_To_Cart_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:05.940" level="INFO">Clicking button 'ADD TO CART'.</msg>
+<status status="PASS" starttime="20240515 17:31:05.939" endtime="20240515 17:31:11.085"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:05.938" endtime="20240515 17:31:11.086"/>
+</kw>
+<kw name="Go Checkout" library="productdetailpage">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${cnt}</var>
+<arg>${Checkout_btn}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20240515 17:31:11.612" level="INFO">${cnt} = 1</msg>
+<status status="PASS" starttime="20240515 17:31:11.088" endtime="20240515 17:31:11.613"/>
+</kw>
+<if>
+<branch type="IF" condition="${cnt} == 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cart_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240515 17:31:11.614" endtime="20240515 17:31:11.614"/>
+</kw>
+<status status="NOT RUN" starttime="20240515 17:31:11.613" endtime="20240515 17:31:11.615"/>
+</branch>
+<status status="PASS" starttime="20240515 17:31:11.613" endtime="20240515 17:31:11.615"/>
+</if>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Checkout_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:11.616" level="INFO">Clicking button 'id: checkOutPopUp'.</msg>
+<status status="PASS" starttime="20240515 17:31:11.615" endtime="20240515 17:31:14.237"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:11.087" endtime="20240515 17:31:14.238"/>
+</kw>
+<kw name="Put an Order As Returnuser With ${row}[USERNAME] ${row}[PASSWORD] AND ${None}" library="orderpaymentpage" sourcename="Put an Order As ${newuser} With ${username} ${password} AND ${emailaddress}">
+<kw name="Convert To Lower Case" library="String">
+<var>${newuser_lowercase}</var>
+<arg>${newuser}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20240515 17:31:14.239" level="INFO">${newuser_lowercase} = returnuser</msg>
+<status status="PASS" starttime="20240515 17:31:14.239" endtime="20240515 17:31:14.240"/>
+</kw>
+<if>
+<branch type="IF" condition="$newuser_lowercase == 'newuser'">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Order_Registration_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240515 17:31:14.241" endtime="20240515 17:31:14.241"/>
+</kw>
+<kw name="User Registratrion" library="userprofile">
+<var>${bSuccess}</var>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${emailaddress}</arg>
+<status status="NOT RUN" starttime="20240515 17:31:14.242" endtime="20240515 17:31:14.242"/>
+</kw>
+<if>
+<branch type="IF" condition="$bSuccess == ${False}">
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="NOT RUN" starttime="20240515 17:31:14.242" endtime="20240515 17:31:14.243"/>
+</kw>
+<kw name="Quick Login" library="userprofile">
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20240515 17:31:14.243" endtime="20240515 17:31:14.243"/>
+</kw>
+<status status="NOT RUN" starttime="20240515 17:31:14.242" endtime="20240515 17:31:14.243"/>
+</branch>
+<status status="NOT RUN" starttime="20240515 17:31:14.242" endtime="20240515 17:31:14.243"/>
+</if>
+<status status="NOT RUN" starttime="20240515 17:31:14.240" endtime="20240515 17:31:14.244"/>
+</branch>
+<branch type="ELSE">
+<kw name="Quick Login" library="userprofile">
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${Quicklogin_Username_txtfield}</arg>
+<arg>${username}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:14.246" level="INFO">Typing text 'Angel' into text field 'name: usernameInOrderPayment'.</msg>
+<status status="PASS" starttime="20240515 17:31:14.245" endtime="20240515 17:31:15.862"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${Quicklogin_Password_txtfield}</arg>
+<arg>${password}</arg>
+<arg>clear=True</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:15.864" level="INFO">Typing password into text field 'name: passwordInOrderPayment'.</msg>
+<msg timestamp="20240515 17:31:16.920" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240515 17:31:17.510" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240515 17:31:15.862" endtime="20240515 17:31:17.510"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${QuickLogin_Login_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:17.511" level="INFO">Clicking button 'LOGIN'.</msg>
+<status status="PASS" starttime="20240515 17:31:17.510" endtime="20240515 17:31:22.686"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:14.244" endtime="20240515 17:31:22.687"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:14.244" endtime="20240515 17:31:22.687"/>
+</branch>
+<status status="PASS" starttime="20240515 17:31:14.240" endtime="20240515 17:31:22.687"/>
+</if>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>NEXT</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:22.689" level="INFO">Clicking button 'NEXT'.</msg>
+<status status="PASS" starttime="20240515 17:31:22.687" endtime="20240515 17:31:27.780"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name: safepay_username</arg>
+<arg>${username}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:27.782" level="INFO">Typing text 'Angel' into text field 'name: safepay_username'.</msg>
+<status status="PASS" starttime="20240515 17:31:27.781" endtime="20240515 17:31:29.417"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>name: safepay_password</arg>
+<arg>${password}</arg>
+<arg>clear=True</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:29.418" level="INFO">Typing password into text field 'name: safepay_password'.</msg>
+<msg timestamp="20240515 17:31:30.487" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240515 17:31:31.099" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240515 17:31:29.417" endtime="20240515 17:31:31.100"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>PAY NOW</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:31.101" level="INFO">Clicking button 'PAY NOW'.</msg>
+<status status="PASS" starttime="20240515 17:31:31.100" endtime="20240515 17:31:36.220"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:14.238" endtime="20240515 17:31:36.221"/>
+</kw>
+<kw name="Order Shoulbe be Put Successfully with Text Thank you for buying with Advantage" library="orderpaymentpage" sourcename="Order Shoulbe be Put Successfully with Text ${paymentsuccessfully}">
+<kw name="Element Attribute Value Should Be" library="SeleniumLibrary">
+<arg>${Payment_Confirmation_txt}</arg>
+<arg>innerText</arg>
+<arg>${paymentsuccessfully}</arg>
+<doc>Verifies element identified by ``locator`` contains expected attribute value.</doc>
+<msg timestamp="20240515 17:31:37.254" level="INFO">Element '//div[@id="orderPaymentSuccess"]//span[contains(@class, "roboto-regular")]' attribute 'innerText' contains value 'Thank you for buying with Advantage'.</msg>
+<status status="PASS" starttime="20240515 17:31:36.223" endtime="20240515 17:31:37.255"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:36.222" endtime="20240515 17:31:37.255"/>
+</kw>
+<kw name="User Logout" library="userprofile">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${User_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:37.257" level="INFO">Clicking element 'id: menuUser'.</msg>
+<status status="PASS" starttime="20240515 17:31:37.256" endtime="20240515 17:31:38.312"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Logout_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:38.313" level="INFO">Clicking element '//*[@id="loginMiniTitle"]/label[@translate="Sign_out"]'.</msg>
+<status status="PASS" starttime="20240515 17:31:38.312" endtime="20240515 17:31:39.380"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:37.256" endtime="20240515 17:31:39.380"/>
+</kw>
+<status status="PASS" starttime="20240515 17:30:59.499" endtime="20240515 17:31:39.380"/>
+</iter>
+<iter>
+<var name="${row}">{'USERNAME': 'JoyWang', 'PASSWORD': 'JoyWang@301'}</var>
+<kw name="Pick up a Catagory to View" library="homepage">
+<arg>${Mice_Img}</arg>
+<kw name="Convert Elementlocator To Tuple String" library="UtilLibrary">
+<var>${elementexists}</var>
+<arg>${catagorylocator}</arg>
+<doc>Convert element locator from string to a string like a tuple so that it could
+be used in Evaluate function and check the element condition with
+Wait For statement.</doc>
+<msg timestamp="20240515 17:31:39.381" level="INFO">Concat String is: 'id','miceImg'</msg>
+<msg timestamp="20240515 17:31:39.382" level="INFO">${elementexists} = ('id','miceImg')</msg>
+<status status="PASS" starttime="20240515 17:31:39.381" endtime="20240515 17:31:39.382"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${elementexists}</var>
+<arg>${elementexists}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240515 17:31:39.382" level="INFO">${elementexists} = ('id', 'miceImg')</msg>
+<status status="PASS" starttime="20240515 17:31:39.382" endtime="20240515 17:31:39.382"/>
+</kw>
+<kw name="Wait For Expected Condition" library="SeleniumLibrary">
+<arg>Element To Be Clickable</arg>
+<arg>${elementexists}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until ``condition`` is true or ``timeout`` expires.</doc>
+<status status="PASS" starttime="20240515 17:31:39.382" endtime="20240515 17:31:40.945"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${catagorylocator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:40.947" level="INFO">Clicking element 'id: miceImg'.</msg>
+<status status="PASS" starttime="20240515 17:31:40.946" endtime="20240515 17:31:42.072"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:39.381" endtime="20240515 17:31:42.073"/>
+</kw>
+<kw name="Pick up a Product to View" library="productcatagorypage">
+<arg>${HP_Z3200_Img}</arg>
+<kw name="Click Image" library="SeleniumLibrary">
+<arg>${productlocator}</arg>
+<doc>Clicks an image identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:42.075" level="INFO">Clicking image 'id: 28'.</msg>
+<status status="PASS" starttime="20240515 17:31:42.074" endtime="20240515 17:31:43.687"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:42.073" endtime="20240515 17:31:43.688"/>
+</kw>
+<kw name="Set Product Quantity" library="productdetailpage">
+<arg>2</arg>
+<doc>The step to modify the quantity to be added to the cart.
+The arguemnts is to set the quantity. Using Keyboard simulation instead of
+Input Text as here comes the shadow dom which cannot be interacted directly.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Quantity_txtfield}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:43.690" level="INFO">Clicking element 'name: quantity'.</msg>
+<status status="PASS" starttime="20240515 17:31:43.689" endtime="20240515 17:31:44.748"/>
+</kw>
+<kw name="Press Key" library="SeleniumLibrary">
+<arg>${Quantity_txtfield}</arg>
+<arg>${quantity}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" starttime="20240515 17:31:44.749" endtime="20240515 17:31:45.795"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:43.688" endtime="20240515 17:31:45.796"/>
+</kw>
+<kw name="Add to Cart" library="productdetailpage">
+<doc>The step to add the product to the cart.</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Add_To_Cart_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:45.798" level="INFO">Clicking button 'ADD TO CART'.</msg>
+<status status="PASS" starttime="20240515 17:31:45.797" endtime="20240515 17:31:50.904"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:45.796" endtime="20240515 17:31:50.905"/>
+</kw>
+<kw name="Go Checkout" library="productdetailpage">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${cnt}</var>
+<arg>${Checkout_btn}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20240515 17:31:51.422" level="INFO">${cnt} = 1</msg>
+<status status="PASS" starttime="20240515 17:31:50.906" endtime="20240515 17:31:51.423"/>
+</kw>
+<if>
+<branch type="IF" condition="${cnt} == 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cart_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240515 17:31:51.424" endtime="20240515 17:31:51.424"/>
+</kw>
+<status status="NOT RUN" starttime="20240515 17:31:51.423" endtime="20240515 17:31:51.424"/>
+</branch>
+<status status="PASS" starttime="20240515 17:31:51.423" endtime="20240515 17:31:51.424"/>
+</if>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Checkout_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:51.425" level="INFO">Clicking button 'id: checkOutPopUp'.</msg>
+<status status="PASS" starttime="20240515 17:31:51.424" endtime="20240515 17:31:54.037"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:50.906" endtime="20240515 17:31:54.038"/>
+</kw>
+<kw name="Put an Order As Returnuser With ${row}[USERNAME] ${row}[PASSWORD] AND ${None}" library="orderpaymentpage" sourcename="Put an Order As ${newuser} With ${username} ${password} AND ${emailaddress}">
+<kw name="Convert To Lower Case" library="String">
+<var>${newuser_lowercase}</var>
+<arg>${newuser}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20240515 17:31:54.040" level="INFO">${newuser_lowercase} = returnuser</msg>
+<status status="PASS" starttime="20240515 17:31:54.040" endtime="20240515 17:31:54.040"/>
+</kw>
+<if>
+<branch type="IF" condition="$newuser_lowercase == 'newuser'">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Order_Registration_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240515 17:31:54.041" endtime="20240515 17:31:54.041"/>
+</kw>
+<kw name="User Registratrion" library="userprofile">
+<var>${bSuccess}</var>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${emailaddress}</arg>
+<status status="NOT RUN" starttime="20240515 17:31:54.041" endtime="20240515 17:31:54.041"/>
+</kw>
+<if>
+<branch type="IF" condition="$bSuccess == ${False}">
+<kw name="Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="NOT RUN" starttime="20240515 17:31:54.042" endtime="20240515 17:31:54.042"/>
+</kw>
+<kw name="Quick Login" library="userprofile">
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20240515 17:31:54.042" endtime="20240515 17:31:54.042"/>
+</kw>
+<status status="NOT RUN" starttime="20240515 17:31:54.042" endtime="20240515 17:31:54.042"/>
+</branch>
+<status status="NOT RUN" starttime="20240515 17:31:54.042" endtime="20240515 17:31:54.043"/>
+</if>
+<status status="NOT RUN" starttime="20240515 17:31:54.041" endtime="20240515 17:31:54.043"/>
+</branch>
+<branch type="ELSE">
+<kw name="Quick Login" library="userprofile">
+<arg>${username}</arg>
+<arg>${password}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${Quicklogin_Username_txtfield}</arg>
+<arg>${username}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:54.044" level="INFO">Typing text 'JoyWang' into text field 'name: usernameInOrderPayment'.</msg>
+<status status="PASS" starttime="20240515 17:31:54.043" endtime="20240515 17:31:55.665"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${Quicklogin_Password_txtfield}</arg>
+<arg>${password}</arg>
+<arg>clear=True</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:55.666" level="INFO">Typing password into text field 'name: passwordInOrderPayment'.</msg>
+<msg timestamp="20240515 17:31:56.712" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240515 17:31:57.323" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240515 17:31:55.665" endtime="20240515 17:31:57.323"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${QuickLogin_Login_btn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:31:57.325" level="INFO">Clicking button 'LOGIN'.</msg>
+<status status="PASS" starttime="20240515 17:31:57.324" endtime="20240515 17:32:02.453"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:54.043" endtime="20240515 17:32:02.454"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:54.043" endtime="20240515 17:32:02.454"/>
+</branch>
+<status status="PASS" starttime="20240515 17:31:54.040" endtime="20240515 17:32:02.455"/>
+</if>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>NEXT</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:32:02.456" level="INFO">Clicking button 'NEXT'.</msg>
+<status status="PASS" starttime="20240515 17:32:02.455" endtime="20240515 17:32:07.538"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name: safepay_username</arg>
+<arg>${username}</arg>
+<arg>clear=True</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:32:07.540" level="INFO">Typing text 'JoyWang' into text field 'name: safepay_username'.</msg>
+<status status="PASS" starttime="20240515 17:32:07.539" endtime="20240515 17:32:09.194"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>name: safepay_password</arg>
+<arg>${password}</arg>
+<arg>clear=True</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20240515 17:32:09.196" level="INFO">Typing password into text field 'name: safepay_password'.</msg>
+<msg timestamp="20240515 17:32:10.291" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20240515 17:32:10.896" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20240515 17:32:09.195" endtime="20240515 17:32:10.897"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>PAY NOW</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240515 17:32:10.898" level="INFO">Clicking button 'PAY NOW'.</msg>
+<status status="PASS" starttime="20240515 17:32:10.897" endtime="20240515 17:32:16.004"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:54.039" endtime="20240515 17:32:16.005"/>
+</kw>
+<kw name="Order Shoulbe be Put Successfully with Text Thank you for buying with Advantage" library="orderpaymentpage" sourcename="Order Shoulbe be Put Successfully with Text ${paymentsuccessfully}">
+<kw name="Element Attribute Value Should Be" library="SeleniumLibrary">
+<arg>${Payment_Confirmation_txt}</arg>
+<arg>innerText</arg>
+<arg>${paymentsuccessfully}</arg>
+<doc>Verifies element identified by ``locator`` contains expected attribute value.</doc>
+<msg timestamp="20240515 17:32:17.095" level="INFO">Element '//div[@id="orderPaymentSuccess"]//span[contains(@class, "roboto-regular")]' attribute 'innerText' contains value 'Thank you for buying with Advantage'.</msg>
+<status status="PASS" starttime="20240515 17:32:16.006" endtime="20240515 17:32:17.095"/>
+</kw>
+<status status="PASS" starttime="20240515 17:32:16.005" endtime="20240515 17:32:17.096"/>
+</kw>
+<kw name="User Logout" library="userprofile">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${User_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:32:17.098" level="INFO">Clicking element 'id: menuUser'.</msg>
+<status status="PASS" starttime="20240515 17:32:17.097" endtime="20240515 17:32:18.161"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Logout_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240515 17:32:18.163" level="INFO">Clicking element '//*[@id="loginMiniTitle"]/label[@translate="Sign_out"]'.</msg>
+<status status="PASS" starttime="20240515 17:32:18.162" endtime="20240515 17:32:19.221"/>
+</kw>
+<status status="PASS" starttime="20240515 17:32:17.096" endtime="20240515 17:32:19.221"/>
+</kw>
+<status status="PASS" starttime="20240515 17:31:39.381" endtime="20240515 17:32:19.221"/>
+</iter>
+<status status="PASS" starttime="20240515 17:30:13.860" endtime="20240515 17:32:19.221"/>
+</for>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240515 17:32:19.222" endtime="20240515 17:32:19.794"/>
+</kw>
+<doc>The Workflow including all the steps from browsing to
+adding products to cart and final payment with a return user.</doc>
+<tag>end_to_end</tag>
+<tag>smoketest</tag>
+<status status="PASS" starttime="20240515 17:30:08.862" endtime="20240515 17:32:19.796"/>
+</test>
+<doc>The end to end shopping flow verification with PO model design</doc>
+<status status="PASS" starttime="20240515 17:30:07.945" endtime="20240515 17:32:19.798"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">end_to_end</stat>
+<stat pass="1" fail="0" skip="0">smoketest</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Shopping Test Cases">Shopping Test Cases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

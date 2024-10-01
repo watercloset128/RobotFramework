@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.8 on darwin)" generated="20240512 21:57:43.808" rpa="false" schemaversion="4">
+<suite id="s1" name="Robot Interactive Console" source="/Users/wangcangsang/.vscode/extensions/robocorp.robotframework-lsp-1.12.0/src/robotframework_ls/vendored/robotframework_interactive/robot_interactive_console.robot">
+<test id="s1-t1" name="Default Task/Test" line="5">
+<kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Hello World</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 21:58:32.757" endtime="20240512 21:58:32.758"/>
+</kw>
+<kw name="Variables">
+<arg>resources/variables/locatorvariables.py</arg>
+<msg timestamp="20240512 21:58:51.303" level="FAIL">No keyword with name 'Variables' found. Did you mean:
+    BuiltIn.Log Variables
+    BuiltIn.Get Variables
+    BuiltIn.Set Variable</msg>
+<status status="FAIL" starttime="20240512 21:58:51.302" endtime="20240512 21:58:51.303"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Laptop_Img}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 21:59:21.378" endtime="20240512 21:59:21.379"/>
+</kw>
+<kw name="Convert Elementlocator To Tuple String" library="UtilLibrary">
+<var>${locatortuple}</var>
+<arg>${Laptop_Img}</arg>
+<doc>Convert element locator from string to a string like a tuple so that it could
+be used in Evaluate function and check the element condition with
+Wait For statement.</doc>
+<msg timestamp="20240512 21:59:31.139" level="INFO">Concat String is: 'id','laptopsImg'</msg>
+<msg timestamp="20240512 21:59:31.139" level="INFO">${locatortuple} = ('id','laptopsImg')</msg>
+<status status="PASS" starttime="20240512 21:59:31.138" endtime="20240512 21:59:31.139"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${locatortuple}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 21:59:40.295" endtime="20240512 21:59:40.296"/>
+</kw>
+<status status="PASS" starttime="20240512 21:57:43.834" endtime="20240512 23:36:09.904"/>
+</kw>
+<status status="PASS" starttime="20240512 21:57:43.833" endtime="20240512 23:36:09.912"/>
+</test>
+<status status="PASS" starttime="20240512 21:57:43.811" endtime="20240512 23:36:09.931"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Robot Interactive Console">Robot Interactive Console</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

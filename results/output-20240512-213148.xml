@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.8 on darwin)" generated="20240512 21:31:48.111" rpa="false" schemaversion="4">
+<suite id="s1" name="RobotFramework" source="/Users/wangcangsang/Library/CloudStorage/OneDrive-Personal/文档/Tech/RobotFramework">
+<suite id="s1-s1" name="RF Init" source="/Users/wangcangsang/Library/CloudStorage/OneDrive-Personal/文档/Tech/RobotFramework/RF_Init.robot">
+<test id="s1-s1-t1" name="TC_Init" line="11">
+<kw name="Log To Console" library="BuiltIn">
+<arg>message='TC Init Started'</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 21:31:49.031" endtime="20240512 21:31:49.031"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://www.python.org</arg>
+<arg>Edge</arg>
+<arg>options=${Options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240512 21:31:49.033" level="INFO">Opening browser 'Edge' to base url 'https://www.python.org'.</msg>
+<status status="PASS" starttime="20240512 21:31:49.032" endtime="20240512 21:31:55.656"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3 seconds</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240512 21:31:58.671" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20240512 21:31:55.666" endtime="20240512 21:31:58.671"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240512 21:31:58.672" endtime="20240512 21:31:59.105"/>
+</kw>
+<status status="PASS" starttime="20240512 21:31:49.030" endtime="20240512 21:31:59.107"/>
+</test>
+<test id="s1-s1-t2" name="Quick Test Validation" line="17">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Laptop_Img}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 21:31:59.120" endtime="20240512 21:31:59.124"/>
+</kw>
+<kw name="Convert Elementlocator To Tuple String" library="UtilLibrary">
+<var>${locatortuple}</var>
+<arg>${Laptop_Img}</arg>
+<doc>Convert element locator from string to a string like a tuple so that it could
+be used in Evaluate function and check the element condition with
+Wait For statement.</doc>
+<msg timestamp="20240512 21:31:59.131" level="INFO">Concat String is: 'id','laptopsImg'</msg>
+<msg timestamp="20240512 21:31:59.131" level="INFO">${locatortuple} = ('id','laptopsImg')</msg>
+<status status="PASS" starttime="20240512 21:31:59.127" endtime="20240512 21:31:59.131"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${locatortuple}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240512 21:31:59.132" endtime="20240512 21:31:59.133"/>
+</kw>
+<status status="PASS" starttime="20240512 21:31:59.114" endtime="20240512 21:31:59.134"/>
+</test>
+<status status="PASS" starttime="20240512 21:31:48.158" endtime="20240512 21:31:59.137"/>
+</suite>
+<status status="PASS" starttime="20240512 21:31:48.134" endtime="20240512 21:31:59.140"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="RobotFramework">RobotFramework</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1" name="RF Init">RobotFramework.RF Init</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
